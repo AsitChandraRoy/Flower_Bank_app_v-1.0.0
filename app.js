@@ -7,6 +7,10 @@
 //     const withdrawBtn = document.querySelector("#withdrawBtn");
 //     const historyBtn = document.querySelector("#historyBtn");
 
+//     window.addEventListener("click", ()=>{
+//       input.focus();
+//     })
+
 //     let currentBalance = 0;
 //     let transactions = [];
 
@@ -33,13 +37,15 @@
 //     currentBalance = updateBalanceDisplay();
 
 //     addBtn.addEventListener("click", () => {
+//       input.focus();
 //       let amount = input.value.trim();
 //       if (amount >= 10) {
 //         addBtn.setAttribute("class", "hidden");
 //         confirmBtn.setAttribute(
 //           "class",
-//           "show bg-black text-white px-3 py-2 rounded-md"
+//           "show  bg-yellow-700 hover:bg-yellow-500 text-white px-3 py-2 rounded-md"
 //         );
+//         withdrawBtn.setAttribute("class", "hidden")
 //       } else {
 //         alert("Input a valid number minimum $10");
 //         return;
@@ -47,13 +53,15 @@
 //     });
 
 //     withdrawBtn.addEventListener("click", () => {
+//       input.focus();
 //       let amount = input.value.trim();
 //       if (amount >= 10) {
 //         withdrawBtn.setAttribute("class", "hidden");
 //         confirmBtn2.setAttribute(
 //           "class",
-//           "show bg-black text-white px-3 py-2 rounded-md"
+//           "show  bg-purple-500 hover:bg-purple-600 text-white px-3 py-2 rounded-md"
 //         );
+//         addBtn.setAttribute("class", "hidden")
 //       } else {
 //         alert("Input a valid number minimum $10");
 //         return;
@@ -85,8 +93,9 @@
 //       confirmBtn.setAttribute("class", "hidden");
 //       addBtn.setAttribute(
 //         "class",
-//         "show bg-black text-white px-3 py-2 rounded-md"
+//         "show bg-green-500 hover:bg-green-600 text-white px-3 py-2 rounded-md"
 //       );
+//       withdrawBtn.setAttribute("class", "show bg-pink-700 hover:bg-pink-500 text-white px-3 py-2 rounded-md")
 //     });
 
 //     // Withdraw money Confirm
@@ -116,9 +125,10 @@
 
 //       input.value = "";
 //       confirmBtn2.setAttribute("class", "hidden");
+//       addBtn.setAttribute("class", "show bg-green-500 hover:bg-green-600 text-white px-3 py-2 rounded-md")
 //       withdrawBtn.setAttribute(
 //         "class",
-//         "show bg-black text-white px-3 py-2 rounded-md"
+//         "show bg-pink-700 hover:bg-pink-500 text-white px-3 py-2 rounded-md"
 //       );
 //     });
 
@@ -141,4 +151,18 @@
 //         historyId.appendChild(row);
 //       });
 //     }
+
+//     //Show Transaction History / Bank Statement
+//     const statement = document.querySelector("#statement");
+//     const closeBtn = document.querySelector("#closeBtn");
+//     historyBtn.addEventListener("click", ()=>{
+//       statement.setAttribute("class", "show");
+//       closeBtn.setAttribute("class", "show border bg-red-700 hover:bg-red-500 text-white p-2 rounded-md");
+//     })
+
+//     // close history
+//     closeBtn.addEventListener("click", ()=>{
+//       statement.setAttribute("class", "hidden");
+//       closeBtn.setAttribute("class", "hidden");
+//     })
 //   });
