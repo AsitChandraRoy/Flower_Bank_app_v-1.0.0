@@ -14,17 +14,17 @@
         <h3 id="balance">Current Balance: $ 0</h3>
         <input id="input" type="text" title="input" class="border p-2 w-64" placeholder="Enter a amount">
         <div class="btn mt-2">
-            <button id="addBtn" class="bg-black text-white px-3 py-2 rounded-md" type="button">Add Money</button>
-            <button id="confirmBtn" class="hidden bg-black text-white px-3 py-2 rounded-md"
+            <button id="addBtn" class="bg-green-500 hover:bg-green-600 text-white px-3 py-2 rounded-md" type="button">Add Money</button>
+            <button id="confirmBtn" class="hidden"
                 type="button">Confirm</button>
-            <button id="withdrawBtn" class="bg-black text-white px-3 py-2 rounded-md" type="button">Withdraw
-                Money</button>
+            <button id="withdrawBtn" class="bg-pink-700 hover:bg-pink-500 text-white px-3 py-2 rounded-md" type="button">Withdraw Money</button>
             <button id="confirmBtn2" class="hidden" type="button">Confirm</button>
         </div>
-        <button id="historyBtn" class="bg-black text-white px-3 py-2 rounded-md mt-3" type="button">Transaction
-            History / Bank Statement</button>
+        <button id="historyBtn" class="bg-orange-500 hover:bg-orange-600 text-white px-3 py-2 rounded-md mt-3" type="button">Transaction History / Bank Statement</button>
+        <button id="closeBtn" class="hidden" type="button">close</button>
+
         <div class="flex justify-center">
-            <table class="border-2 mt-3">
+            <table id="statement" class="border-2 mt-3 hidden">
                 <thead class="border-2">
                     <th class="w-32">Date</th>
                     <!-- <th class="w-32">Time</th> -->
@@ -56,6 +56,10 @@
     const withdrawBtn = document.querySelector("#withdrawBtn");
     const historyBtn = document.querySelector("#historyBtn");
 
+    window.addEventListener("click", ()=>{
+      input.focus();
+    })
+
     let currentBalance = 0;
     let transactions = [];
 
@@ -82,12 +86,13 @@
     currentBalance = updateBalanceDisplay();
 
     addBtn.addEventListener("click", () => {
+      input.focus();
       let amount = input.value.trim();
       if (amount >= 10) {
         addBtn.setAttribute("class", "hidden");
         confirmBtn.setAttribute(
           "class",
-          "show bg-black text-white px-3 py-2 rounded-md"
+          "show  bg-yellow-700 hover:bg-yellow-500 text-white px-3 py-2 rounded-md"
         );
       } else {
         alert("Input a valid number minimum $10");
@@ -96,12 +101,13 @@
     });
 
     withdrawBtn.addEventListener("click", () => {
+      input.focus();
       let amount = input.value.trim();
       if (amount >= 10) {
         withdrawBtn.setAttribute("class", "hidden");
         confirmBtn2.setAttribute(
           "class",
-          "show bg-black text-white px-3 py-2 rounded-md"
+          "show  bg-purple-500 hover:bg-purple-600 text-white px-3 py-2 rounded-md"
         );
       } else {
         alert("Input a valid number minimum $10");
@@ -134,7 +140,7 @@
       confirmBtn.setAttribute("class", "hidden");
       addBtn.setAttribute(
         "class",
-        "show bg-black text-white px-3 py-2 rounded-md"
+        "show bg-green-500 hover:bg-green-600 text-white px-3 py-2 rounded-md"
       );
     });
 
@@ -167,7 +173,7 @@
       confirmBtn2.setAttribute("class", "hidden");
       withdrawBtn.setAttribute(
         "class",
-        "show bg-black text-white px-3 py-2 rounded-md"
+        "show bg-pink-700 hover:bg-pink-500 text-white px-3 py-2 rounded-md"
       );
     });
 
@@ -190,6 +196,20 @@
         historyId.appendChild(row);
       });
     }
+
+    //Show Transaction History / Bank Statement
+    const statement = document.querySelector("#statement");
+    const closeBtn = document.querySelector("#closeBtn");
+    historyBtn.addEventListener("click", ()=>{
+      statement.setAttribute("class", "show");
+      closeBtn.setAttribute("class", "show border bg-red-700 hover:bg-red-500 text-white p-2 rounded-md");
+    })
+
+    // close history
+    closeBtn.addEventListener("click", ()=>{
+      statement.setAttribute("class", "hidden");
+      closeBtn.setAttribute("class", "hidden");
+    })
   });
 
 
